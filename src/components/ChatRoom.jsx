@@ -36,6 +36,13 @@ export default function ChatRoom() {
           It's never happened before.
         </div>
       </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Type here"
+          className="input input-bordered w-full max-w-xs "
+        />
+      </div>
     </>
   );
 }

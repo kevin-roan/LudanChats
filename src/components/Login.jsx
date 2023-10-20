@@ -1,13 +1,9 @@
 import { Button, Typography, IconButton } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 import React from "react";
-import { useState } from "react";
 import ChatRoom from "./ChatRoom";
 
 export default function Login() {
-  const [isChatRoom, setChatRoom] = useState(false);
-  const handleClick = () => {
-    setChatRoom(!isChatRoom);
-  };
   return (
     <div>
       <div className="mt-60">
@@ -23,9 +19,11 @@ export default function Login() {
           className="input input-bordered input-secondary w-full max-w-xs"
         />
         <div className="flex justify-center items-center m-3 ">
-          <Button color="lime" className="m-3" onClick={handleClick}>
-            Login with Email
-          </Button>
+          <Link to={{ pathname: "/chatroom" }}>
+            <Button color="lime" className="m-3" Link="/chatroom">
+              Login with Email
+            </Button>
+          </Link>
           <Button color="white">Create New Account</Button>
         </div>
         <Typography variant="h6">OR</Typography>
@@ -35,7 +33,6 @@ export default function Login() {
           </IconButton>
           <Typography variant="h6">Sign in with Google</Typography>
         </div>
-        {isChatRoom && <ChatRoom />}
       </div>
     </div>
   );
