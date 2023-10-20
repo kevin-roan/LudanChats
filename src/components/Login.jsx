@@ -24,7 +24,10 @@ export default function Login() {
               Login with Email
             </Button>
           </Link>
-          <Button color="white">Create New Account</Button>
+
+          <Link to={{ pathname: "/groups" }}>
+            <Button color="white">Create New Account</Button>
+          </Link>
         </div>
         <Typography variant="h6">OR</Typography>
         <div className="mt-4">
