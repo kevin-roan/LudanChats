@@ -1,47 +1,33 @@
+import { Typography, Button } from "@material-tailwind/react";
+import { Input } from "@material-tailwind/react";
 import React from "react";
 
 export default function ChatRoom() {
   return (
     <>
-      <div className="chat chat-start">
-        <div className="chat-bubble chat-bubble-primary">
-          What kind of nonsense is this
+      <div className=" badge badge-neutral">
+        <Typography>Today</Typography>
+      </div>
+      <div className="m-5">
+        <div className="chat chat-start">
+          <div className="chat-bubble chat-bubble-primary m-1">Bhai jaaan</div>
         </div>
-      </div>
-      <div className="chat chat-start">
-        <div className="chat-bubble chat-bubble-secondary">
-          Put me on the Council and not make me a Master!??
+        <div className="chat chat-end">
+          <div className="chat-bubble chat-bubble-success m-1">
+            Kya Hua be ?
+          </div>
+          <div className="chat-bubble chat-bubble-success">kisne maara</div>
         </div>
-      </div>
-      <div className="chat chat-start">
-        <div className="chat-bubble chat-bubble-accent">
-          That's never been done in the history of the Jedi. It's insulting!
+        <div className="fixed flex bottom-9 w-full">
+          <input
+            type="text"
+            placeholder="Type here"
+            className="input input-bordered w-full max-w-xs "
+          />
+          <Button color="pink" className="ml-2">
+            Send
+          </Button>
         </div>
-      </div>
-      <div className="chat chat-end">
-        <div className="chat-bubble chat-bubble-info">Calm down, Anakin.</div>
-      </div>
-      <div className="chat chat-end">
-        <div className="chat-bubble chat-bubble-success">
-          You have been given a great honor.
-        </div>
-      </div>
-      <div className="chat chat-end">
-        <div className="chat-bubble chat-bubble-warning">
-          To be on the Council at your age.
-        </div>
-      </div>
-      <div className="chat chat-end">
-        <div className="chat-bubble chat-bubble-error">
-          It's never happened before.
-        </div>
-      </div>
-      <div>
-        <input
-          type="text"
-          placeholder="Type here"
-          className="input input-bordered w-full max-w-xs "
-        />
       </div>
     </>
   );
