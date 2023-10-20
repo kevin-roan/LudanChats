@@ -19,7 +19,7 @@ export default function Login() {
           className="input input-bordered input-secondary w-full max-w-xs"
         />
         <div className="flex justify-center items-center m-3 ">
-          <Link to={{ pathname: "/chatroom" }}>
+          <Link to={{ pathname: "/groups" }}>
             <Button color="lime" className="m-3" Link="/chatroom">
               Login with Email
             </Button>

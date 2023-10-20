@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 export default function () {
   return (
     <div className="">
-      <Card className="w-full h-screen bg-[#90B4CE]">
+      <Card className="w-full h-screen bg-[#90b4ce]">
         <List>
           <Link to="/chatroom">
             <ListItem>
