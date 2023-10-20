@@ -22,9 +22,9 @@ export default function ChatRoom() {
           <input
             type="text"
             placeholder="Type here"
-            className="input input-bordered w-full max-w-xs "
+            className="input input-bordered "
           />
-          <Button color="pink" className="ml-2">
+          <Button color="pink" className="mx-4">
             Send
           </Button>
         </div>
