@@ -27,10 +27,17 @@ export default function ChatRoom() {
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
   useEffect(() => {
-    if ("Notification" in window && Notification.permission === "granted") {
-      const notification = new Notification("Bhai Jaan", {
-        body: "You have a new Notification.",
-      });
+    if (messages) {
+      const latestMessage = messages[messages.length - 1];
+      const currentUserUid = auth.currentUser.uid;
+
+      if (latestMessage && latestMessage.uid !== currentUserUid) {
+        if ("Notification" in window && Notification.permission === "granted") {
+          const notification = new Notification("New Message", {
+            body: "Hellow Bhai You have a new Notification.",
+          });
+        }
+      }
     }
   }, [messages]);
   return (
