@@ -29,8 +29,8 @@ export default function ChatRoom() {
 
   const sendNotication = () => {
     if ("Notification" in window && Notification.permission === "granted") {
-      const notification = new Notification("New Message", {
-        body: "Hellow Bhai You have a new Notification.",
+      const notification = new Notification("Beta Message Aagaya", {
+        body: "New Notification from LudanChats.",
       });
     }
   };
