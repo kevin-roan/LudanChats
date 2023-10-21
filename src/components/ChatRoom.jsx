@@ -1,5 +1,5 @@
 import { Typography, Button } from "@material-tailwind/react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import React from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import firebase from "firebase/compat/app";
@@ -26,6 +26,13 @@ export default function ChatRoom() {
     setFormData("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
+  useEffect(() => {
+    if ("Notification" in window && Notification.permission === "granted") {
+      const notification = new Notification("New Message", {
+        body: "Hellow Bhai You have a new Notification.",
+      });
+    }
+  }, [messages]);
 
   return (
     <>
