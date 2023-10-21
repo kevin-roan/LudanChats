@@ -32,27 +32,36 @@ export default function ChatRoom() {
       <div className=" badge badge-neutral">
         <Typography>Today</Typography>
       </div>
+
       <div className="m-5">
         <div className="mb-24">
-          <div className={`chat chat-end`}>
-            {messages &&
-              messages.map((msg) => (
-                <div className="chat-bubble chat-bubble-success m-1">
-                  {msg.text}
-                  <div className="avatar">
-                    <div className="w-8 h-8 rounded-full">
-                      <img
-                        src={
-                          msg.photoURL ||
-                          "https://api.adorable.io/avatars/23/abott@adorable.png"
-                        }
-                      />
+          {messages &&
+            messages.map((msg) => {
+              const uid = msg.uid;
+              const messageClass =
+                uid === auth.currentUser.uid ? "chat-end" : "chat-start";
+              const msgColor =
+                uid === auth.currentUser.uid
+                  ? "chat-bubble-success"
+                  : "chat-bubble-primary";
+              return (
+                <div className={`chat ${messageClass}`}>
+                  <div className={`chat-bubble ${msgColor} m-1`}>
+                    {msg.text}
+                    <div className="avatar">
+                      <div className="w-8 h-8 rounded-full">
+                        <img
+                          src={
+                            msg.photoURL ||
+                            "https://api.adorable.io/avatars/23/abott@adorable.png"
+                          }
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-              ))}
-            <span ref={dummy}></span>
-          </div>
+              );
+            })}
         </div>
         <span ref={dummy}></span>
         <div className="fixed flex bottom-9 w-full">
