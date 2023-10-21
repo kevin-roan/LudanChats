@@ -47,6 +47,7 @@ export default function ChatRoom() {
             <span ref={dummy}></span>
           </div>
         </div>
+        <span ref={dummy}></span>
         <div className="fixed flex bottom-9 w-full">
           <form onSubmit={sendMessage}>
             <input
