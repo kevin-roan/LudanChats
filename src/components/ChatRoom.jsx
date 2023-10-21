@@ -26,6 +26,17 @@ export default function ChatRoom() {
     setFormData("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
+  useEffect(() => {
+    if ("Notification" in window) {
+      Notification.requestPermission().then((permission) => {
+        if (permission === "granted") {
+          const notification = new Notification("New Message", {
+            body: "Hello, you have a new message.",
+          });
+        }
+      });
+    }
+  }, [messages]);
   return (
     <>
       <div className=" badge badge-neutral">
