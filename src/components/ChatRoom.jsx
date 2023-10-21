@@ -26,6 +26,7 @@ export default function ChatRoom() {
     setFormData("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
+
   useEffect(() => {
     if ("Notification" in window && Notification.permission === "granted") {
       const notification = new Notification("New Message", {
