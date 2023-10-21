@@ -1,20 +1,33 @@
 import { Typography, Button } from "@material-tailwind/react";
 import { Input } from "@material-tailwind/react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import React from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import firebase from "firebase/compat/app";
+
 const firestore = firebase.firestore();
+const auth = firebase.auth();
 
 export default function ChatRoom() {
+  const dummy = useRef();
   const [formData, setFormData] = useState("");
-
-  // messages fetch start
   const messagesRef = firestore.collection("messages");
   const query = messagesRef.orderBy("createdAt").limit(25);
   const [messages] = useCollectionData(query, { idField: "id" });
-  console.log(messages);
-  // messages fetch end
+
+  const sendMessage = async (e) => {
+    e.preventDefault();
+    const { uid, photoURL } = auth.currentUser;
+    await messagesRef.add({
+      text: formData,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      photoURL,
+    });
+
+    setFormData("");
+    dummy.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <>
@@ -32,18 +45,25 @@ export default function ChatRoom() {
                 {msg.text}
               </div>
             ))}
-          <div className="chat-bubble chat-bubble-success">{formData}</div>
+          <span ref={dummy}></span>
         </div>
         <div className="fixed flex bottom-9 w-full">
-          <input
-            type="text"
-            placeholder="Say something..."
-            className="input input-bordered "
-            onChange={(e) => setFormData(e.target.value)}
-          />
-          <Button color="pink" className="mx-4" disabled={!formData}>
-            Send
-          </Button>
+          <form onSubmit={sendMessage}>
+            <input
+              type="text"
+              placeholder="Say something..."
+              className="input input-bordered "
+              onChange={(e) => setFormData(e.target.value)}
+            />
+            <Button
+              color="pink"
+              className="mx-4"
+              disabled={!formData}
+              onClick={sendMessage}
+            >
+              Send
+            </Button>
+          </form>
         </div>
       </div>
     </>
