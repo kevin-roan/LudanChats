@@ -42,6 +42,16 @@ export default function ChatRoom() {
               messages.map((msg) => (
                 <div className="chat-bubble chat-bubble-success m-1">
                   {msg.text}
+                  <div className="avatar">
+                    <div className="w-8 h-8 rounded-full">
+                      <img
+                        src={
+                          msg.photoURL ||
+                          "https://api.adorable.io/avatars/23/abott@adorable.png"
+                        }
+                      />
+                    </div>
+                  </div>
                 </div>
               ))}
             <span ref={dummy}></span>
