@@ -27,14 +27,13 @@ export default function ChatRoom() {
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  useEffect(() => {
+  const sendNotication = () => {
     if ("Notification" in window && Notification.permission === "granted") {
       const notification = new Notification("New Message", {
         body: "Hellow Bhai You have a new Notification.",
       });
     }
-  }, [messages]);
-
+  };
   return (
     <>
       <div className=" badge badge-neutral">
@@ -47,7 +46,9 @@ export default function ChatRoom() {
             messages.map((msg) => {
               const uid = msg.uid;
               const messageClass =
-                uid === auth.currentUser.uid ? "chat-end" : "chat-start";
+                uid === auth.currentUser.uid
+                  ? "chat-end" && sendNotication()
+                  : "chat-start";
               const msgColor =
                 uid === auth.currentUser.uid
                   ? "chat-bubble-success"
