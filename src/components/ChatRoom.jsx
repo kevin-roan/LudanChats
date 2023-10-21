@@ -1,5 +1,5 @@
 import { Typography, Button } from "@material-tailwind/react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import React from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import firebase from "firebase/compat/app";
@@ -46,9 +46,7 @@ export default function ChatRoom() {
             messages.map((msg) => {
               const uid = msg.uid;
               const messageClass =
-                uid === auth.currentUser.uid
-                  ? "chat-end" && sendNotication()
-                  : "chat-start";
+                uid === auth.currentUser.uid ? "chat-end" : "chat-start";
               const msgColor =
                 uid === auth.currentUser.uid
                   ? "chat-bubble-success"
