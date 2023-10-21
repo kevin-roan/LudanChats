@@ -26,20 +26,6 @@ export default function ChatRoom() {
     setFormData("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
-  useEffect(() => {
-    if (messages) {
-      const latestMessage = messages[messages.length - 1];
-      const currentUserUid = auth.currentUser.uid;
-
-      if (latestMessage && latestMessage.uid !== currentUserUid) {
-        if ("Notification" in window && Notification.permission === "granted") {
-          const notification = new Notification("New Message", {
-            body: "Hellow Bhai You have a new Notification.",
-          });
-        }
-      }
-    }
-  }, [messages]);
   return (
     <>
       <div className=" badge badge-neutral">
@@ -71,6 +57,7 @@ export default function ChatRoom() {
                         />
                       </div>
                     </div>
+                    <span ref={dummy}></span>
                   </div>
                 </div>
               );
