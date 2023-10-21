@@ -23,7 +23,6 @@ export default function ChatRoom() {
       uid,
       photoURL,
     });
-
     setFormData("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
@@ -37,14 +36,16 @@ export default function ChatRoom() {
         <div className="chat chat-start">
           <div className="chat-bubble chat-bubble-primary m-1">Bhai jaaan</div>
         </div>
-        <div className="chat chat-end">
-          {messages &&
-            messages.map((msg) => (
-              <div className="chat-bubble chat-bubble-success m-1">
-                {msg.text}
-              </div>
-            ))}
-          <span ref={dummy}></span>
+        <div className="mb-24">
+          <div className="chat chat-end">
+            {messages &&
+              messages.map((msg) => (
+                <div className="chat-bubble chat-bubble-success m-1">
+                  {msg.text}
+                </div>
+              ))}
+            <span ref={dummy}></span>
+          </div>
         </div>
         <div className="fixed flex bottom-9 w-full">
           <form onSubmit={sendMessage}>
