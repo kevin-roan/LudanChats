@@ -53,6 +53,7 @@ export default function ChatRoom() {
             <input
               type="text"
               placeholder="Say something..."
+              value={formData}
               className="input input-bordered "
               onChange={(e) => setFormData(e.target.value)}
             />
