@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import React from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import "firebase/compat/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Groups from "./Groups";
+
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 firebase.initializeApp({
   apiKey: "AIzaSyCvzH6lmgJllp57xA2VBe0Ipw7NKQIQGq0",
@@ -16,6 +19,7 @@ firebase.initializeApp({
 });
 
 const auth = firebase.auth();
+const firestore = firebase.firestore();
 const SignInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider);
