@@ -27,8 +27,6 @@ export default function ChatRoom() {
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  const { uid } = messages;
-  const messageClass = uid === auth.currentUser.uid ? "chat-start" : "chat-end";
   return (
     <>
       <div className=" badge badge-neutral">
@@ -36,7 +34,7 @@ export default function ChatRoom() {
       </div>
       <div className="m-5">
         <div className="mb-24">
-          <div className={`chat ${messageClass}`}>
+          <div className={`chat chat-end`}>
             {messages &&
               messages.map((msg) => (
                 <div className="chat-bubble chat-bubble-success m-1">
