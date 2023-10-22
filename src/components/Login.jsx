@@ -10,12 +10,12 @@ import Groups from "./Groups";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
 firebase.initializeApp({
-  apiKey: "AIzaSyCvzH6lmgJllp57xA2VBe0Ipw7NKQIQGq0",
-  authDomain: "ludanchats-fc442.firebaseapp.com",
-  projectId: "ludanchats-fc442",
-  storageBucket: "ludanchats-fc442.appspot.com",
-  messagingSenderId: "842444773688",
-  appId: "1:842444773688:web:89c829a1d7ec072c7e89cd",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 });
 
 const auth = firebase.auth();
