@@ -80,26 +80,37 @@ export default function ChatRoom() {
               );
             })}
         </div>
-        <span ref={dummy}></span>
-        <div className="fixed flex bottom-9 w-full">
-          <form onSubmit={sendMessage}>
-            <input
-              type="text"
-              placeholder="Say something..."
-              value={formData}
-              className="input input-bordered "
-              onChange={(e) => setFormData(e.target.value)}
-            />
-            <Button
-              color="pink"
-              className="mx-4"
-              disabled={!formData}
-              onClick={sendMessage}
-            >
-              Send
-            </Button>
-          </form>
-        </div>
+      </div>
+      <div className="fixed flex bottom-9 w-full">
+        <form onSubmit={sendMessage}>
+          <input
+            type="text"
+            placeholder="Say something..."
+            value={formData}
+            className="input input-bordered "
+            onChange={(e) => setFormData(e.target.value)}
+          />
+          <Button
+            color="pink"
+            className="mx-4"
+            disabled={!formData}
+            onClick={sendMessage}
+          >
+            Send
+          </Button>
+          <Button
+            onClick={() =>
+              window.scrollTo({
+                top: 10000000,
+                behavior: "auto",
+              })
+            }
+            color="blue-gray"
+            className="rounded-full"
+          >
+            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+          </Button>
+        </form>
       </div>
     </>
   );
