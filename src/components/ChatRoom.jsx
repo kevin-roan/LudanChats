@@ -119,7 +119,7 @@ export default function ChatRoom() {
       ) : (
         <div>
           <p>Login Failed</p>
-          <Link to={{ pathname: "/groups" }}>
+          <Link to={{ pathname: "/" }}>
             <Button color="red">Try Again</Button>
           </Link>
         </div>

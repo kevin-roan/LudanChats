@@ -47,23 +47,23 @@ export default function Login() {
     });
   };
 
-  const handleSubmit = (isLogin) => {
+  const handleSubmit = async (isLogin) => {
     try {
       if (isLogin) {
-        firebase
+        await firebase
           .auth()
           .signInWithEmailAndPassword(formData.email, formData.password);
         setFormData({ email: "", password: "" });
         console.log("user logged in");
       } else {
-        firebase
+        await firebase
           .auth()
           .createUserWithEmailAndPassword(formData.email, formData.password);
         setFormData({ email: "", password: "" });
         console.log("new user");
       }
     } catch (error) {
-      window.prompt("Error", error);
+      alert("Authentication Failed" + error.message);
     }
   };
 
@@ -102,22 +102,16 @@ export default function Login() {
             />
           </form>
           <div className="flex justify-center items-center m-3 ">
-            <Link to={{ pathname: "/groups" }}>
-              <Button
-                color="lime"
-                className="m-3"
-                Link="/chatroom"
-                onClick={() => handleSubmit(true)}
-              >
-                Login with Email
-              </Button>
-            </Link>
-
-            <Link to={{ pathname: "/groups" }}>
-              <Button color="white" onClick={() => handleSubmit(false)}>
-                Create New Account
-              </Button>
-            </Link>
+            <Button
+              color="lime"
+              className="m-3"
+              onClick={() => handleSubmit(true)}
+            >
+              Login with Email
+            </Button>
+            <Button color="white" onClick={() => handleSubmit(false)}>
+              Create New Account
+            </Button>
           </div>
           <Typography variant="h6">OR</Typography>
           <div className="mt-4">
